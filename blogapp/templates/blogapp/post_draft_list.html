@@ -1,0 +1,21 @@
+{% extends "blogapp/base.html" %}
+
+{% block body %}
+
+<h1>Draft Page</h1>
+<hr>
+
+{% post in posts %}
+
+<div class="jumbotron">
+    <h2>
+        <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+        <span class="text-muted float-right">{{post.create_date|date:"D M Y"}}</span>
+    </h2>
+
+    <p>{{post.text|truncatechars:20}}</p>
+</div>
+
+{% endfor %}
+
+{% endblock %}
